@@ -3,9 +3,9 @@
  */
 package mensajes_app;
 
-import java.sql.Connection;
+import java.util.Scanner;
 
-public class Inicio {
+public class inicio {
 
 	/**
 	 * @param args
@@ -13,14 +13,41 @@ public class Inicio {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Conexion conexion = new Conexion();
+		Scanner scan = new Scanner(System.in);
 		
-		try(Connection cnx = conexion.get_connection()){
-			 
-		}
-		catch(Exception e){
-			System.out.println(e);
-		}
+		int opcion =  0;
+		
+		do {
+			System.out.println("-----------------------------------");
+			System.out.println("Aplicación de  mensajes");
+			System.out.println("1.-Crear mensaje");
+			System.out.println("2.-Listar mensajes");
+			System.out.println("3.-Editar mensaje");
+			System.out.println("4.-Eliminar mensaje");
+			System.out.println("5.-Salir");
+			//Se lee  la opcion del usuario
+			opcion = scan.nextInt();
+			
+			switch (opcion) {
+				case 1:
+					servicioMensajes.crearMensaje();
+					break;
+				case 2:
+					servicioMensajes.listarMensaje();
+					break;
+				case 3:
+					servicioMensajes.editarMensaje();
+					break;
+				case 4:
+					servicioMensajes.borrarMensaje();
+					break;
+				default:
+					break;
+			}
+			
+		}while(opcion !=5);
+		
+		
 
 	}
 
